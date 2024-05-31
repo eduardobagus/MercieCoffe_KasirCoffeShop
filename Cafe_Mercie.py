@@ -29,3 +29,20 @@ def tampilkan_menu():
     for i, item in menu.items():
         print(f"{i}. {item['nama']:<22} ({item['harga']} IDR)")
     print("=" * 38)
+
+def proses_pemesanan():
+    pesanan = {}
+    total_harga = 0
+    print("\nMasukkan kode makanan yang dipesan (pisahkan dengan spasi):")
+    kode_pesanan = input().split()
+
+    # Hitung total harga pesanan
+    for kode in kode_pesanan:
+        if kode in menu:
+            if kode in pesanan:
+                pesanan[kode] += 1
+            else:
+                pesanan[kode] = 1
+            total_harga += menu[kode]["harga"]
+        else:
+            print(f"Maaf, kode {kode} tidak tersedia.")
