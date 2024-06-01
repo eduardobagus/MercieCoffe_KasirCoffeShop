@@ -46,3 +46,22 @@ def proses_pemesanan():
             total_harga += menu[kode]["harga"]
         else:
             print(f"Maaf, kode {kode} tidak tersedia.")
+
+    # Diskon 20% jika total harga lebih dari 100rb
+    diskon = 0
+    if total_harga > 100000:
+        diskon = 0.2 * total_harga
+
+    # Ulang proses pembayaran jika uang kurang
+    while True:
+        uang_pelanggan = float(input("Masukkan uang: "))
+        if uang_pelanggan < total_harga:
+            print("Uang yang anda masukkan kurang.")
+            continue
+        else:
+            # Tampilkan struk
+            rincian_coffeshop()
+            print("")
+            print(datetime.now().strftime("Waktu: %d/%m/%Y %H:%M:%S"))
+            print("=" * 38)
+            print("Menu yang dipesan:")
