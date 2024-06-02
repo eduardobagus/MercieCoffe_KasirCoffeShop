@@ -65,3 +65,26 @@ def proses_pemesanan():
             print(datetime.now().strftime("Waktu: %d/%m/%Y %H:%M:%S"))
             print("=" * 38)
             print("Menu yang dipesan:")
+            for kode, jumlah in pesanan.items():
+                print(f"{menu[kode]['nama']:20}: {jumlah:2}")
+            print("-" * 38)
+            print("Total       : Rp. ", total_harga)
+            if total_harga >= 100000:
+                print("Diskon      : 20%", "(", diskon, ")")
+                print("Bayar       : Rp. ", uang_pelanggan)
+                print("Kembalian   : Rp. ", uang_pelanggan - (total_harga - diskon))
+            else:
+                print("Bayar       : Rp. ", uang_pelanggan)
+                print("Kembalian   : Rp. ", uang_pelanggan - total_harga)
+            print("=" * 38)
+            print("")
+            print("     ~~Terimakasih Sudah Memesan~~")
+            print("")
+            print("=" * 38)
+            return True
+
+# Jalankan program
+while True:
+    tampilkan_menu()
+    if proses_pemesanan():
+        break
